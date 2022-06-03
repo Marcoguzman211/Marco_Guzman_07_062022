@@ -16,6 +16,14 @@ const toggleListBox = (listboxList, chevron ) => {
         chevron.classList.add('fa-chevron-down') 
       }
 }
+
+const openOnInputListbox = ($listboxList, $chevron) => {
+    $listboxList.classList.remove('hidden')
+    $listboxList.classList.add('show')
+    $chevron.classList.add('fa-chevron-up') 
+    $chevron.classList.remove('fa-chevron-down') 
+  }
+
 // Listboxs opening with chevron event 
 document.querySelectorAll('.listbox-controls .chevron').forEach(element => {
     element.addEventListener('click', () => {
@@ -25,3 +33,13 @@ document.querySelectorAll('.listbox-controls .chevron').forEach(element => {
       toggleListBox(listboxList, chevron);
     });
   });
+
+  // Listboxs opening on input event
+document.querySelectorAll('.listbox-input').forEach(element => {
+    element.addEventListener('click', () => {
+      const parentElement = element.closest('.listbox'); 
+      const listboxList = parentElement.querySelector('.listbox-list');
+      const chevron = parentElement.querySelector('.chevron');
+      openOnInputListbox(listboxList, chevron)
+    })
+  })
