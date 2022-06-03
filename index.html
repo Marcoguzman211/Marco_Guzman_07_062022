@@ -11,9 +11,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css"
-        integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/953a9712d4.js" crossorigin="anonymous"></script>
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +61,52 @@
                 </div>
             </div>
         </div>
-        <div>dropdrowns</div>
+        <!-- LISTBOXS -->
+        <section class="container">
+            <div class="listboxs-section">
+                <div>
+                    <div class="listboxs">
+                        <!-- Ingredients -->
+                        <div id="ingredients-listbox" class="listbox" data-type="ingredients">
+                            <div id="ingredients-controls" class="listbox-controls" data-type="ingredients">
+                                <input id="ingredients-input" class="listbox-input" data-type="ingredients"
+                                    placeholder="Ingrédients" type="text" size="10">
+                                <button class="listbox-btn" id="ingredients-btn" data-type="ingredients">
+                                    <i class="fa fa-chevron-down chevron" id="ingredients-btn-chevron"
+                                        aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <ul class="listbox-list hidden" id="ingredients-list" data-type="ingredients"></ul>
+                        </div>
+                        <!-- Appliances -->
+                        <div id="appliances-listbox" class="listbox" data-type="appliances">
+                            <div id="appliances-controls" class="listbox-controls" data-type="appliances">
+                                <input id="appliances-input" class="listbox-input" data-type="appliances"
+                                    placeholder="Appareils" type="text" size="10">
+                                <button class="listbox-btn" id="appliances-btn" data-type="appliances">
+                                    <i class="fa fa-chevron-down chevron" id="appliances-btn-chevron"
+                                        aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <ul class="listbox-list hidden" id="appliances-list" data-type="appliances"></ul>
+                        </div>
+                        <!-- Ustensils -->
+                        <div id="ustensils-listbox" class="listbox" data-type="ustensils">
+                            <div id="ustensils-controls" class="listbox-controls" data-type="ustensils">
+                                <input id="ustensils-input" class="listbox-input" data-type="ustensils"
+                                    placeholder="Ustensiles" type="text" size="10">
+                                <button class="listbox-btn" id="ustensils-btn" data-type="ustensils">
+                                    <i class="fa fa-chevron-down chevron" id="ustensils-btn-chevron"
+                                        aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <ul class="listbox-list hidden" id="ustensils-list" data-type="ustensils"></ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
         <div>Cards</div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

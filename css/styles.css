@@ -33,3 +33,125 @@ body {
     background-color: #ED6454;
     border: none;
 }
+
+/* LISTBOX */
+.listboxs-section {
+    padding: 20px 0;
+    margin: 0 auto;
+ }
+  
+  .listboxs {
+    display: flex;
+    padding: 0; 
+}
+    @media screen and (max-width: 1200px) {
+      .listboxs {
+        flex-wrap: wrap;
+        justify-content: flex-start; } }
+  
+  .listbox {
+    flex-wrap: wrap;
+    margin: 20px 20px 0 0;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 170px; }
+    @media screen and (max-width: 1400px) {
+      .listbox {
+        max-width: 400px; } }
+    @media screen and (max-width: 1000px) {
+      .listbox {
+        max-width: 200px; } }
+    @media screen and (max-width: 700px) {
+      .listbox {
+        max-width: 100%;
+        justify-content: center; } }
+  
+  .listbox-controls {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    cursor: pointer; }
+  
+  .listbox-btn {
+    padding-right: 15px;
+    height: 60px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: white;
+    font-size: 18px;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent; }
+  
+  .listbox-input {
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    outline: none;
+    padding: 0 15px;
+    height: 70px;
+    width: min-content;
+    background-color: transparent; }
+  
+  .listbox-input::placeholder {
+    color: white;
+    opacity: 1; }
+  
+  .listbox-input.expanded::placeholder {
+    opacity: .5; }
+  
+  .listbox-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 10px;
+    line-height: 1em;
+    max-height: 12em;
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+    margin-top: -7px;
+    border-radius: 0 0 5px 5px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
+    scrollbar-width: thin; }
+    @media screen and (max-width: 1200px) {
+      .listbox-list {
+        grid-template-columns: repeat(2, 1fr); } }
+    @media screen and (max-width: 1000px) {
+      .listbox-list {
+        grid-template-columns: repeat(1, 1fr); } }
+  
+  .listbox-list li {
+    cursor: pointer;
+    list-style: none; }
+  
+  #ingredients-controls {
+    background-color: #3282F7; }
+  
+  #appliances-controls {
+    background-color: #68D9A4; }
+  
+  #ustensils-controls {
+    background-color: #ED6454; }
+  
+  #ingredients-list {
+    background-color: #3282F7; }
+  
+  #appliances-list {
+    background-color: #68D9A4; }
+  
+  #ustensils-list {
+    background-color: #ED6454; }
+  
+  .hidden {
+    display: none; }
+  
+  .show {
+    border-radius: 5px; }
+  
