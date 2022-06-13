@@ -34,6 +34,20 @@ body {
     border: none;
 }
 
+/* Search */
+.search-section {
+  width: 90%;
+  margin: 0 auto; }
+
+.search-field {
+  display: flex;
+  justify-content: space-between; }
+
+.search-field input {
+  border: none;
+  width: 100%;
+  outline: none; }
+
 /* LISTBOX */
 .listboxs-section {
     padding: 20px 0;
@@ -155,3 +169,96 @@ body {
   .show {
     border-radius: 5px; }
   
+    /* Cards */
+.results-section {
+  width: 1296px;
+  display: grid;
+  width: 90%;
+  padding: 0;
+  margin: 0 auto; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 6%; }
+  @media screen and (max-width: 1900px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr); } }
+  @media screen and (max-width: 1400px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media screen and (max-width: 900px) {
+    .cards {
+      grid-template-columns: repeat(1, 1fr); } }
+
+.card {
+  min-width: 100%;
+  height: 364px;
+  justify-content: space-between;
+  display: block;
+  margin: 0 auto;
+  /* @media screen and (max-width: 500px) { 
+        width: 400px;
+    }  */ }
+  @media screen and (min-width: 800px) {
+    .card {
+      max-width: 350px; } }
+
+.card-header {
+  height: 178px;
+  background-color: #C7BEBE;
+  border-radius: 5px 5px 0 0; }
+
+.card-body {
+  height: 186px;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  margin: 0;
+  background-color: #E7E7E7; }
+
+.card-body-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.time {
+  font-weight: 500; }
+
+.bi-clock {
+  font-size: 20px; }
+
+.card-body-bottom {
+  display: flex;
+  justify-content: space-between; }
+
+.recipe-ingredients {
+  /* min-width: 171px;  */
+  font-size: 11px;
+  padding: 2px; }
+  @media screen and (max-width: 500px) {
+    .recipe-ingredients {
+      max-width: 150px; } }
+  @media screen and (min-width: 500px) {
+    .recipe-ingredients {
+      min-width: 171px; } }
+
+.ingredient-quantity-unit {
+  font-size: 11px;
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.recipe-text {
+  /* min-width: 171px;  */
+  max-height: 109px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: x-small;
+  padding: 2px; }
+  @media screen and (max-width: 500px) {
+    .recipe-text {
+      max-width: 170px; } }
+  @media screen and (min-width: 500px) {
+    .recipe-text {
+      min-width: 171px; } }

@@ -1,0 +1,23 @@
+{
+  "name": "les_petits_plats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcoguzman211/Marco_Guzman_07_062022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcoguzman211/Marco_Guzman_07_062022/issues"
+  },
+  "homepage": "https://github.com/Marcoguzman211/Marco_Guzman_07_062022#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0"
+  }
+}
