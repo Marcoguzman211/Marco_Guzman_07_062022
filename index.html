@@ -19,6 +19,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" href="/img/vector.svg" type="image/svg+xml">
 </head>
 
 <body>
@@ -44,8 +45,8 @@
                 <div id="tags"></div>
             </div>
         </section>
-        <!-- Tags section
-        <div class="container">
+        <!-- Tags section -->
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-12" id="tagsContainer">
                     <button type="button" class="btn btn-primary btn-sm">Ingrédient <i class="bi bi-x-circle ps-2"></i>
@@ -53,56 +54,54 @@
                     <button type="button" class="btn btn-secondary btn-sm">Appareil <i class="bi bi-x-circle ps-2"></i>
                     </button>
                     <button type="button" class="btn btn-danger btn-sm">Ustensil <i class="bi bi-x-circle ps-2"></i>
-                    </button>
+                    </button> 
                 </div>
             </div>
         </div> -->
         <!-- LISTBOXS -->
-        <section class="container">
-            <div class="listboxs-section">
-                <div>
-                    <div class="listboxs">
-                        <!-- Ingredients -->
-                        <div id="ingredients-listbox" class="listbox" data-type="ingredients">
-                            <div id="ingredients-controls" class="listbox-controls" data-type="ingredients">
-                                <input id="ingredients-input" class="listbox-input" data-type="ingredients"
-                                    placeholder="Ingrédients" type="text" size="10">
-                                <button class="listbox-btn" id="ingredients-btn" data-type="ingredients">
-                                    <i class="fa fa-chevron-down chevron" id="ingredients-btn-chevron"
-                                        aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            <ul class="listbox-list hidden" id="ingredients-list" data-type="ingredients"></ul>
-                        </div>
-                        <!-- Appliances -->
-                        <div id="appliances-listbox" class="listbox" data-type="appliances">
-                            <div id="appliances-controls" class="listbox-controls" data-type="appliances">
-                                <input id="appliances-input" class="listbox-input" data-type="appliances"
-                                    placeholder="Appareils" type="text" size="10">
-                                <button class="listbox-btn" id="appliances-btn" data-type="appliances">
-                                    <i class="fa fa-chevron-down chevron" id="appliances-btn-chevron"
-                                        aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            <ul class="listbox-list hidden" id="appliances-list" data-type="appliances"></ul>
-                        </div>
-                        <!-- Ustensils -->
-                        <div id="ustensils-listbox" class="listbox" data-type="ustensils">
-                            <div id="ustensils-controls" class="listbox-controls" data-type="ustensils">
-                                <input id="ustensils-input" class="listbox-input" data-type="ustensils"
-                                    placeholder="Ustensiles" type="text" size="10">
-                                <button class="listbox-btn" id="ustensils-btn" data-type="ustensils">
-                                    <i class="fa fa-chevron-down chevron" id="ustensils-btn-chevron"
-                                        aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            <ul class="listbox-list hidden" id="ustensils-list" data-type="ustensils"></ul>
-                        </div>
 
+        <section class="listboxs-section">
+            <div>
+                <div class="listboxs">
+                    <!-- Ingredients -->
+                    <div id="ingredients-listbox" class="listbox" data-type="ingredients">
+                        <div id="ingredients-controls" class="listbox-controls" data-type="ingredients">
+                            <input id="ingredients-input" class="listbox-input" data-type="ingredients"
+                                placeholder="Ingrédients" type="text" size="10">
+                            <button class="listbox-btn" id="ingredients-btn" data-type="ingredients">
+                                <i class="fa fa-chevron-down chevron" id="ingredients-btn-chevron"
+                                    aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <ul class="listbox-list hidden" id="ingredients-list" data-type="ingredients"></ul>
+                    </div>
+                    <!-- Appliances -->
+                    <div id="appliances-listbox" class="listbox" data-type="appliances">
+                        <div id="appliances-controls" class="listbox-controls" data-type="appliances">
+                            <input id="appliances-input" class="listbox-input" data-type="appliances"
+                                placeholder="Appareils" type="text" size="10">
+                            <button class="listbox-btn" id="appliances-btn" data-type="appliances">
+                                <i class="fa fa-chevron-down chevron" id="appliances-btn-chevron"
+                                    aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <ul class="listbox-list hidden" id="appliances-list" data-type="appliances"></ul>
+                    </div>
+                    <!-- Ustensils -->
+                    <div id="ustensils-listbox" class="listbox" data-type="ustensils">
+                        <div id="ustensils-controls" class="listbox-controls" data-type="ustensils">
+                            <input id="ustensils-input" class="listbox-input" data-type="ustensils"
+                                placeholder="Ustensiles" type="text" size="10">
+                            <button class="listbox-btn" id="ustensils-btn" data-type="ustensils">
+                                <i class="fa fa-chevron-down chevron" id="ustensils-btn-chevron" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <ul class="listbox-list hidden" id="ustensils-list" data-type="ustensils"></ul>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- CARDS -->
         <section class="results-section">
             <!-- "No result" -->
@@ -111,6 +110,32 @@
             </span>
 
             <div class="cards">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <div class="card-body-top">
+                            <h6 class="card-title">name</h6>
+                            <h6 class="time"><i class="bi bi-clock"></i> time min</h6>
+                        </div>
+                        <div class="card-body-bottom">
+                            <ul class="recipe-ingredients">ingredientsList</ul>
+                            <p class="recipe-text card-text">description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <div class="card-body-top">
+                            <h6 class="card-title">name</h6>
+                            <h6 class="time"><i class="bi bi-clock"></i> time min</h6>
+                        </div>
+                        <div class="card-body-bottom">
+                            <ul class="recipe-ingredients">ingredientsList</ul>
+                            <p class="recipe-text card-text">description</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-header"></div>
                     <div class="card-body">

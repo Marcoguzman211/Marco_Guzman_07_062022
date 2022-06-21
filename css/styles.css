@@ -1,175 +1,208 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.logo-vector {
+  text-align: center; }
+
+.logo-text {
+  text-align: center; }
+
+ul {
+  padding: 0;
+  margin: 0; }
 
 body {
-    font-family: 'Roboto', sans-serif;
-}
+  margin: 0;
+  padding: 0; }
 
-/* #SearchBox div div div input {
-    background-color: red; 
-} */
+main {
+  margin: 0;
+  padding: 0; }
 
-.form-control {
-    border-radius: 0;
-    border: none;
-    background-color: #E7E7E7;
-}
+.header-section {
+  margin: 0 auto;
+  display: flex; }
 
-.input-group-append button {
-    background-color: #E7E7E7;
-    border-radius: 0;
-}
+.logo {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; }
 
-.btn.btn-primary {
-    background-color: #3282F7;
-    border: none;
-}
-
-.btn.btn-secondary {
-    background-color: #68D9A4;
-    border: none;
-}
-
-.btn.btn-danger {
-    background-color: #ED6454;
-    border: none;
-}
-
-/* Search */
-.search-section {
-  width: 90%;
+.logo-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto; }
 
-.search-field {
-  display: flex;
-  justify-content: space-between; }
+.vector {
+  align-items: center;
+  transform: translate(-50%); }
 
-.search-field input {
-  border: none;
-  width: 100%;
-  outline: none; }
+.container {
+  margin: 0 auto;
+  padding: 0; }
+
+/* Mods */
+.hidden {
+  display: none; }
+
+/* TYPO */
+* {
+  font-family: Lato, sans-serif;
+  font-weight: 400; }
+
+b {
+  font-weight: 700; }
 
 /* LISTBOX */
 .listboxs-section {
-    padding: 20px 0;
-    margin: 0 auto;
- }
-  
-  .listboxs {
-    display: flex;
-    padding: 0; 
-}
-    @media screen and (max-width: 1200px) {
-      .listboxs {
-        flex-wrap: wrap;
-        justify-content: flex-start; } }
-  
-  .listbox {
-    flex-wrap: wrap;
-    margin: 20px 20px 0 0;
-    border-radius: 5px;
-    overflow: hidden;
-    min-width: 170px; }
-    @media screen and (max-width: 1400px) {
-      .listbox {
-        max-width: 400px; } }
-    @media screen and (max-width: 1000px) {
-      .listbox {
-        max-width: 200px; } }
-    @media screen and (max-width: 700px) {
-      .listbox {
-        max-width: 100%;
-        justify-content: center; } }
-  
-  .listbox-controls {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
-    cursor: pointer; }
-  
-  .listbox-btn {
-    padding-right: 15px;
-    height: 60px;
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    color: white;
-    font-size: 18px;
-    position: relative;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: transparent; }
-  
-  .listbox-input {
-    border: none;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    outline: none;
-    padding: 0 15px;
-    height: 70px;
-    width: min-content;
-    background-color: transparent; }
-  
-  .listbox-input::placeholder {
-    color: white;
-    opacity: 1; }
-  
-  .listbox-input.expanded::placeholder {
-    opacity: .5; }
-  
-  .listbox-list {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px 10px;
-    line-height: 1em;
-    max-height: 12em;
-    color: white;
-    font-size: 18px;
-    padding: 20px;
-    margin-top: -7px;
-    border-radius: 0 0 5px 5px;
-    overflow-y: scroll;
-    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
-    scrollbar-width: thin; }
-    @media screen and (max-width: 1200px) {
-      .listbox-list {
-        grid-template-columns: repeat(2, 1fr); } }
-    @media screen and (max-width: 1000px) {
-      .listbox-list {
-        grid-template-columns: repeat(1, 1fr); } }
-  
-  .listbox-list li {
-    cursor: pointer;
-    list-style: none; }
-  
-  #ingredients-controls {
-    background-color: #3282F7; }
-  
-  #appliances-controls {
-    background-color: #68D9A4; }
-  
-  #ustensils-controls {
-    background-color: #ED6454; }
-  
-  #ingredients-list {
-    background-color: #3282F7; }
-  
-  #appliances-list {
-    background-color: #68D9A4; }
-  
-  #ustensils-list {
-    background-color: #ED6454; }
-  
-  .hidden {
-    display: none; }
-  
-  .show {
-    border-radius: 5px; }
-  
-    /* Cards */
+  padding: 20px 0;
+  width: 90%;
+  margin: 0 auto; }
+
+.listboxs {
+  display: flex;
+  padding: 0; }
+  @media screen and (max-width: 1200px) {
+    .listboxs {
+      flex-wrap: wrap;
+      justify-content: flex-start; } }
+
+.listbox {
+  flex-wrap: wrap;
+  margin: 20px 20px 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+  min-width: 170px; }
+  @media screen and (max-width: 1400px) {
+    .listbox {
+      max-width: 400px; } }
+  @media screen and (max-width: 1000px) {
+    .listbox {
+      max-width: 200px; } }
+  @media screen and (max-width: 700px) {
+    .listbox {
+      max-width: 100%;
+      justify-content: center; } }
+
+.listbox-controls {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  cursor: pointer; }
+
+.listbox-btn {
+  padding-right: 15px;
+  height: 60px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent; }
+
+.listbox-input {
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  outline: none;
+  padding: 0 15px;
+  height: 70px;
+  width: min-content;
+  background-color: transparent; }
+
+.listbox-input::placeholder {
+  color: white;
+  opacity: 1; }
+
+.listbox-input.expanded::placeholder {
+  opacity: .5; }
+
+.listbox-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 10px;
+  line-height: 1em;
+  max-height: 12em;
+  color: white;
+  font-size: 18px;
+  padding: 20px;
+  margin-top: -7px;
+  border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
+  scrollbar-width: thin; }
+  @media screen and (max-width: 1200px) {
+    .listbox-list {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media screen and (max-width: 1000px) {
+    .listbox-list {
+      grid-template-columns: repeat(1, 1fr); } }
+
+.listbox-list li {
+  cursor: pointer;
+  list-style: none; }
+
+#ingredients-controls {
+  background-color: #3282F7; }
+
+#appliances-controls {
+  background-color: #68D9A4; }
+
+#ustensils-controls {
+  background-color: #ED6454; }
+
+#ingredients-list {
+  background-color: #3282F7; }
+
+#appliances-list {
+  background-color: #68D9A4; }
+
+#ustensils-list {
+  background-color: #ED6454; }
+
+.hidden {
+  display: none; }
+
+.show {
+  border-radius: 5px; }
+
+/* TAGS  */
+#tags {
+  display: flex;
+  font-weight: 400; }
+
+.tag {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  color: white;
+  height: 37px;
+  min-width: 60px;
+  padding: 6px 2px 0 5px;
+  margin: 30px 5px 5px 0; }
+
+.tag div {
+  margin: 0 8px; }
+
+.bi-x-circle {
+  margin-right: 8px;
+  cursor: pointer; }
+
+#tags div[data-type="ingredients"] {
+  background-color: #3282F7; }
+
+#tags div[data-type="appliances"] {
+  background-color: #68D9A4; }
+
+#tags div[data-type="ustensils"] {
+  background-color: #ED6454; }
+
+/* Cards */
 .results-section {
   width: 1296px;
   display: grid;
@@ -262,3 +295,17 @@ body {
   @media screen and (min-width: 500px) {
     .recipe-text {
       min-width: 171px; } }
+
+/* Search */
+.search-section {
+  width: 90%;
+  margin: 0 auto; }
+
+.search-field {
+  display: flex;
+  justify-content: space-between; }
+
+.search-field input {
+  border: none;
+  width: 100%;
+  outline: none; }
