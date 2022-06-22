@@ -4,6 +4,7 @@ document.getElementById("holahola").addEventListener("click", () => {
 }) */
  import { toggleListBox, openOnInputListbox, getIngredients, getAppliances, getUstensils, createListboxsLists} from "./listboxs.js";
  import { addTag, createTags } from "./tags.js"; 
+ import { displayCards } from "./cards.js";
  import {recipes} from "./data/recipes.js";
 
 /* const tags = [{name: "Broche", datatype: "ustensils"}, {name: "Ail", datatype: "ingredients"}, {name: "Casserole", datatype: "appliances"}]; */
@@ -24,6 +25,8 @@ const tagsContainer = document.getElementById("tags");
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
+
+displayCards(recipes, document.querySelector(".cards"));
 
 
 // Listboxs opening with chevron event 
@@ -46,10 +49,39 @@ document.querySelectorAll(".listbox-input").forEach(element => {
     });
   });
 
+  const handleTagClick = listboxElementList => {
+    const elements = listboxElementList.querySelectorAll("li");
+    elements.forEach(element => {
+      element.addEventListener("click", e => {
+        const dataType = e.target.dataset.type;
+        console.log(dataType);
+        const name = e.target.textContent;
+        const object = { name: name, datatype: dataType};
+        addTag(object, tags);
+        createTags(tags, tagsContainer);
+        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
+        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
+        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  
+        handleTagClick(listboxIngredientsList); 
+        handleTagClick(listboxAppliancesList);
+        handleTagClick(listboxUstensilsList);
+      });
+    });
+  };
+
+handleTagClick(listboxIngredientsList); 
+handleTagClick(listboxAppliancesList);
+handleTagClick(listboxUstensilsList);
+
+
   //AddingTags
-  document.querySelectorAll(".listbox-list li").forEach(element => {
-    element.addEventListener("click", () => {
+/*   document.querySelectorAll(".listbox-list li").forEach(element => {
+    element.addEventListener("click", (e) => {
       addTag(element, tags);
       createTags(tags, tagsContainer);
+      console.log(element.textContent);
+      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
+      createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
+      createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  
     });
-  });
+  }); */
