@@ -7,8 +7,7 @@ document.getElementById("holahola").addEventListener("click", () => {
  import { displayCards } from "./cards.js";
  import {recipes} from "./data/recipes.js";
 
-/* const tags = [{name: "Broche", datatype: "ustensils"}, {name: "Ail", datatype: "ingredients"}, {name: "Casserole", datatype: "appliances"}]; */
-const tags = [];
+let tags = [];
 const ingredients = getIngredients(recipes);
 const ustensils = getUstensils(recipes);
 const appliances = getAppliances(recipes);
@@ -54,10 +53,9 @@ document.querySelectorAll(".listbox-input").forEach(element => {
     elements.forEach(element => {
       element.addEventListener("click", e => {
         const dataType = e.target.dataset.type;
-        console.log(dataType);
         const name = e.target.textContent;
-        const object = { name: name, datatype: dataType};
-        addTag(object, tags);
+        const newTag = { name: name, datatype: dataType};
+        addTag(newTag, tags);
         createTags(tags, tagsContainer);
         createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
         createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
@@ -65,6 +63,7 @@ document.querySelectorAll(".listbox-input").forEach(element => {
         handleTagClick(listboxIngredientsList); 
         handleTagClick(listboxAppliancesList);
         handleTagClick(listboxUstensilsList);
+        handleRemoveTag();
       });
     });
   };
@@ -73,15 +72,20 @@ handleTagClick(listboxIngredientsList);
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
 
-
-  //AddingTags
-/*   document.querySelectorAll(".listbox-list li").forEach(element => {
-    element.addEventListener("click", (e) => {
-      addTag(element, tags);
-      createTags(tags, tagsContainer);
-      console.log(element.textContent);
+const handleRemoveTag = () => {
+  const tagListHtml = document.querySelectorAll("#tags .tag");
+  tagListHtml.forEach(tag => {
+      tag.querySelector("i").addEventListener("click", () => {
+      const tagLabel = tag.getAttribute("data-name");
+      tags = tags.filter(tag => tag.name !== tagLabel);
       createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
-      createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
-      createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  
+      createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
+      createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
+      handleTagClick(listboxIngredientsList); 
+      handleTagClick(listboxAppliancesList);
+      handleTagClick(listboxUstensilsList);
+      createTags(tags, tagsContainer);
+      handleRemoveTag();
     });
-  }); */
+  });
+};
