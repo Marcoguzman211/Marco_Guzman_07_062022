@@ -5,6 +5,7 @@ document.getElementById("holahola").addEventListener("click", () => {
  import { toggleListBox, openOnInputListbox, getIngredients, getAppliances, getUstensils, createListboxsLists} from "./listboxs.js";
  import { addTag, createTags } from "./tags.js"; 
  import { displayCards } from "./cards.js";
+ import { search } from "./search.js";
  import {recipes} from "./data/recipes.js";
 
 let tags = [];
@@ -17,36 +18,39 @@ const listboxIngredientsList = document.getElementById("ingredients-list");
 const listboxAppliancesList = document.getElementById("appliances-list");
 const listboxUstensilsList = document.getElementById("ustensils-list");
 
-//TEST CREATE TAGS 
+//Containers 
 const tagsContainer = document.getElementById("tags");
+const cardsContainer = document.querySelector(".cards");
+const chevronsListboxs = document.querySelectorAll(".listbox-controls .chevron");
+const listboxsInputs = document.querySelectorAll(".listbox-input");
 
 // Create listboxs lists on load :
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
-displayCards(recipes, document.querySelector(".cards"));
+search(recipes, tags, cardsContainer, "");
 
 
 // Listboxs opening with chevron event 
-document.querySelectorAll(".listbox-controls .chevron").forEach(element => {
-    element.addEventListener("click", () => {
-      const parentElement = element.closest(".listbox"); 
-      const listboxList = parentElement.querySelector(".listbox-list");
-      const chevron = parentElement.querySelector(".chevron");
-      toggleListBox(listboxList, chevron);
-    });
+chevronsListboxs.forEach(element => {
+  element.addEventListener("click", () => {
+    const parentElement = element.closest(".listbox"); 
+    const listboxList = parentElement.querySelector(".listbox-list");
+    const chevron = parentElement.querySelector(".chevron");
+    toggleListBox(listboxList, chevron);
   });
+});
 
   // Listboxs opening on input event
-document.querySelectorAll(".listbox-input").forEach(element => {
-    element.addEventListener("click", () => {
-      const parentElement = element.closest(".listbox"); 
-      const listboxList = parentElement.querySelector(".listbox-list");
-      const chevron = parentElement.querySelector(".chevron");
-      openOnInputListbox(listboxList, chevron);
-    });
+listboxsInputs.forEach(element => {
+  element.addEventListener("click", () => {
+    const parentElement = element.closest(".listbox"); 
+    const listboxList = parentElement.querySelector(".listbox-list");
+    const chevron = parentElement.querySelector(".chevron");
+    openOnInputListbox(listboxList, chevron);
   });
+});
 
   const handleTagClick = listboxElementList => {
     const elements = listboxElementList.querySelectorAll("li");
