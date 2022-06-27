@@ -23,19 +23,20 @@ const tagsContainer = document.getElementById("tags");
 const cardsContainer = document.querySelector(".cards");
 const chevronsListboxs = document.querySelectorAll(".listbox-controls .chevron");
 const listboxsInputs = document.querySelectorAll(".listbox-input");
+const searchInput = document.getElementById("search-input");
 
 // Create listboxs lists on load :
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
-search(recipes, tags, cardsContainer, "");
+search(recipes, tags, cardsContainer);
 
 
 // Listboxs opening with chevron event 
-chevronsListboxs.forEach(element => {
-  element.addEventListener("click", () => {
-    const parentElement = element.closest(".listbox"); 
+chevronsListboxs.forEach(clickedChevron => {
+  clickedChevron.addEventListener("click", () => {
+    const parentElement = clickedChevron.closest(".listbox"); 
     const listboxList = parentElement.querySelector(".listbox-list");
     const chevron = parentElement.querySelector(".chevron");
     toggleListBox(listboxList, chevron);
@@ -43,9 +44,9 @@ chevronsListboxs.forEach(element => {
 });
 
   // Listboxs opening on input event
-listboxsInputs.forEach(element => {
-  element.addEventListener("click", () => {
-    const parentElement = element.closest(".listbox"); 
+listboxsInputs.forEach(input => {
+  input.addEventListener("click", () => {
+    const parentElement = input.closest(".listbox"); 
     const listboxList = parentElement.querySelector(".listbox-list");
     const chevron = parentElement.querySelector(".chevron");
     openOnInputListbox(listboxList, chevron);
@@ -67,6 +68,7 @@ listboxsInputs.forEach(element => {
         handleTagClick(listboxIngredientsList); 
         handleTagClick(listboxAppliancesList);
         handleTagClick(listboxUstensilsList);
+        search(recipes, tags, cardsContainer);
         handleRemoveTag();
       });
     });
@@ -89,7 +91,12 @@ const handleRemoveTag = () => {
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       createTags(tags, tagsContainer);
+      search(recipes, tags, cardsContainer, "");
       handleRemoveTag();
     });
   });
 };
+
+searchInput.addEventListener("keyup", (e) => {
+  search(recipes, tags, cardsContainer, e.target.value);
+});
