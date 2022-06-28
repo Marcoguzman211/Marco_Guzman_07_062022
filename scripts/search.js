@@ -3,9 +3,13 @@ export const search = (recipes, tags, container, searchString = "") => {
  const recipesByTags = getRecipesByTags(recipes, tags);
  const recipesBySearchString = getRecipesBySearchString(recipes, searchString, tags);
  const result = [...recipesByTags, ...recipesBySearchString];
- console.log(recipesBySearchString);
  container.innerHTML = "";
- displayCards(result, container);
+ if (result.length === 0) {
+    document.getElementById("no-search-result").classList.remove("hidden");
+ } else {
+    document.getElementById("no-search-result").classList.add("hidden");
+     displayCards(result, container);
+ }
 };
 
 const getRecipesByTags = (recipes, tags) => {
@@ -35,7 +39,7 @@ const getRecipesByTags = (recipes, tags) => {
 };
 
 const getRecipesBySearchString = (recipes, searchString, tags) => {
-    if (tags.length === 0 ) { 
+    if (tags.length === 0 && searchString === ""){ 
         return recipes;
     } else if (searchString.length < 3) {
         return [];
