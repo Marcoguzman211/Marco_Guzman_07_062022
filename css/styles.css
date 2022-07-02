@@ -145,7 +145,14 @@ b {
 
 .listbox-list li {
   cursor: pointer;
-  list-style: none; }
+  list-style: none;
+ }
+
+ .listbox-list li:hover {
+  transform: scaleX(1.03);
+  }
+
+
 
 #ingredients-controls {
   background-color: #3282F7; }
@@ -295,6 +302,10 @@ b {
   @media screen and (min-width: 500px) {
     .recipe-text {
       min-width: 171px; } }
+
+.card:hover {
+  transform: scale(1.01);
+}
 
 /* Search */
 .search-section {

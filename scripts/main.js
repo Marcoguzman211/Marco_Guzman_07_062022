@@ -1,10 +1,5 @@
-/* 
-document.getElementById("holahola").addEventListener("click", () => {
-    document.querySelector(".menu").classList.toggle("hidden");
-}) */
  import { toggleListBox, openOnInputListbox, getIngredients, getAppliances, getUstensils, createListboxsLists} from "./listboxs.js";
  import { addTag, createTags } from "./tags.js"; 
- import { displayCards } from "./cards.js";
  import { search } from "./search.js";
  import {recipes} from "./data/recipes.js";
 
@@ -51,6 +46,13 @@ listboxsInputs.forEach(input => {
     const chevron = parentElement.querySelector(".chevron");
     openOnInputListbox(listboxList, chevron);
   });
+
+  /* input.addEventListener("keyup", (e) => {
+    const parentElement = input.closest(".listbox"); 
+    const listboxList = parentElement.querySelector(".listbox-list");
+    const elements = listboxList.querySelectorAll("li");
+    searchInListbox(elements, e.target.value);
+  }); */
 });
 
   const handleTagClick = listboxElementList => {
@@ -68,7 +70,7 @@ listboxsInputs.forEach(input => {
         handleTagClick(listboxIngredientsList); 
         handleTagClick(listboxAppliancesList);
         handleTagClick(listboxUstensilsList);
-        search(recipes, tags, cardsContainer);
+        search(recipes, tags, cardsContainer, searchInput.value);
         handleRemoveTag();
       });
     });
@@ -91,7 +93,7 @@ const handleRemoveTag = () => {
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       createTags(tags, tagsContainer);
-      search(recipes, tags, cardsContainer, "");
+      search(recipes, tags, cardsContainer, searchInput.value);
       handleRemoveTag();
     });
   });
