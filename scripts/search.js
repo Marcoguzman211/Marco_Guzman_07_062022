@@ -35,7 +35,7 @@ export const handleTagClick = (listboxElementList, tags, recipes) => {
     });
   };
 
-export const handleRemoveTag = (tags, recipes) => {
+/* export const handleRemoveTag = (tags, recipes) => {
     const tagListHtml = document.querySelectorAll("#tags .tag");
     tagListHtml.forEach(tag => {
         tag.querySelector("i").addEventListener("click", (e) => {
@@ -48,24 +48,30 @@ export const handleRemoveTag = (tags, recipes) => {
         handleTagClick(listboxIngredientsList, tagsRemaining, recipes);
         handleTagClick(listboxAppliancesList, tagsRemaining, recipes);
         handleTagClick(listboxUstensilsList, tagsRemaining, recipes);
-        if (tags.length > 1) {
-            search(recipes, tagsRemaining, cardsContainer, searchInput.value);
+        if (tags.length > 0) {
+          search(recipes, tagsRemaining, cardsContainer, searchInput.value);
             handleRemoveTag(tagsRemaining, recipes);
+            createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tagsRemaining);
+        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tagsRemaining);  
+        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tagsRemaining);
         } else {
             let tagsVide = [];
             search(allRecipes, tagsVide, cardsContainer, searchInput.value);
-            handleRemoveTag(tagsVide, recipes);
+            handleTagClick(listboxIngredientsList, tagsVide, recipes);
+            handleTagClick(listboxAppliancesList, tagsVide, recipes);
+            handleTagClick(listboxUstensilsList, tagsVide, recipes);
         }
       });
     });
-  };
+  }; */
 
-
+//Fonction principale
 export const search = (recipes, tags, container, searchString = "") => {
  const recipesByTags = getRecipesByTags(recipes, tags, searchString);
  const recipesBySearchString = getRecipesBySearchString(recipes, searchString, tags);
  const result = [...recipesByTags, ...recipesBySearchString];
  let uniques = [];
+ //Petite boucle sur chaque recette pour ne garder que les recettes uniques
     result.forEach(recipe => {
         if (!uniques.includes(recipe)) {
             uniques.push(recipe);
@@ -86,7 +92,7 @@ export const search = (recipes, tags, container, searchString = "") => {
  }
 };
 
-const getRecipesByTags = (recipes, tags, searchString) => {
+/* const getRecipesByTags = (recipes, tags, searchString) => {
     const recipeTagsNames = tags.map(tag => tag.name);
     let recipesByTags = [];
 
@@ -109,7 +115,45 @@ const getRecipesByTags = (recipes, tags, searchString) => {
     });
 
     return recipesByTags;
-};
+}; */
+
+// Get recipes by tags :
+const getRecipesByTags = ($recipes, $tags) => {
+    if ($tags.length === 0) {
+      return [];
+    }
+    const newRecipes = [];
+    $recipes.forEach((recipe) => {
+      let containsAllTags = true;
+      $tags.forEach((tag) => {
+        console.log(tag.datatype);
+        const tagName = tag.name;
+        let containsIngredientTag = false;
+        if (tag.datatype === "appliances") {
+          if (recipe.appliance.toLowerCase() !== tagName.toLowerCase()) {
+            containsAllTags = false;
+          }
+        } else if (tag.datatype === "ustensils") {
+          if (!recipe.ustensils.includes(tagName)) {
+            containsAllTags = false;
+          }
+        } else if (tag.datatype === "ingredients") {
+          recipe.ingredients.forEach((object) => {
+            if (object.ingredient.toLowerCase() === tagName.toLowerCase()) {
+              containsIngredientTag = true;
+            }
+          });
+          if (containsIngredientTag === false) {
+            containsAllTags = false;
+          }
+        }
+      });
+      if (containsAllTags) {
+        newRecipes.push(recipe);
+      }
+    });
+    return newRecipes;
+  };
 
 const getRecipesBySearchString = (recipes, searchString, tags) => {
     if (tags.length === 0 && searchString.length < 3) {
