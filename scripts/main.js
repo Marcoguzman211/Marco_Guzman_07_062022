@@ -20,10 +20,10 @@ const chevronsListboxs = document.querySelectorAll(".listbox-controls .chevron")
 const listboxsInputs = document.querySelectorAll(".listbox-input");
 const searchInput = document.getElementById("search-input");
 
-// Create listboxs lists on load :
+/* // Create listboxs lists on load :
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
-createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
+createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  */
 
 search(recipes, tags, cardsContainer);
 
@@ -55,7 +55,7 @@ listboxsInputs.forEach(input => {
   }); */
 });
 
-  const handleTagClick = listboxElementList => {
+ /*  const handleTagClick = listboxElementList => {
     const elements = listboxElementList.querySelectorAll("li");
     elements.forEach(element => {
       element.addEventListener("click", e => {
@@ -70,17 +70,17 @@ listboxsInputs.forEach(input => {
         handleTagClick(listboxIngredientsList); 
         handleTagClick(listboxAppliancesList);
         handleTagClick(listboxUstensilsList);
-        search(recipes, tags, cardsContainer, searchInput.value);
         handleRemoveTag();
+        search(recipes, tags, cardsContainer, searchInput.value);
       });
     });
   };
 
 handleTagClick(listboxIngredientsList); 
 handleTagClick(listboxAppliancesList);
-handleTagClick(listboxUstensilsList);
+handleTagClick(listboxUstensilsList); */
 
-const handleRemoveTag = () => {
+/* const handleRemoveTag = () => {
   const tagListHtml = document.querySelectorAll("#tags .tag");
   tagListHtml.forEach(tag => {
       tag.querySelector("i").addEventListener("click", () => {
@@ -97,7 +97,7 @@ const handleRemoveTag = () => {
       handleRemoveTag();
     });
   });
-};
+}; */
 
 searchInput.addEventListener("keyup", (e) => {
   search(recipes, tags, cardsContainer, e.target.value);

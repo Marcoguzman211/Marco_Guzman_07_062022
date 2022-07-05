@@ -1,10 +1,64 @@
 import { displayCards } from "./cards.js";
 import { getIngredients, getAppliances, getUstensils, createListboxsLists} from "./listboxs.js";
+import { addTag, createTags } from "./tags.js";
+
+import { recipes as allRecipes } from "./data/recipes.js";
 
 // Listboxs lists nodes :
 const listboxIngredientsList = document.getElementById("ingredients-list");
 const listboxAppliancesList = document.getElementById("appliances-list");
 const listboxUstensilsList = document.getElementById("ustensils-list");
+
+//Containers 
+const tagsContainer = document.getElementById("tags");
+const cardsContainer = document.querySelector(".cards");
+const searchInput = document.getElementById("search-input");
+
+export const handleTagClick = (listboxElementList, tags, recipes) => {
+    const elements = listboxElementList.querySelectorAll("li");
+    elements.forEach(element => {
+      element.addEventListener("click", e => {
+        const dataType = e.target.dataset.type;
+        const name = e.target.textContent;
+        const newTag = { name: name, datatype: dataType};
+        addTag(newTag, tags);
+        createTags(tags, tagsContainer);
+        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
+        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
+        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  
+        handleTagClick(listboxIngredientsList, tags, recipes);
+        handleTagClick(listboxAppliancesList, tags, recipes);
+        handleTagClick(listboxUstensilsList, tags, recipes);
+        handleRemoveTag(tags, recipes);
+        search(recipes, tags, cardsContainer, searchInput.value);
+      });
+    });
+  };
+
+export const handleRemoveTag = (tags, recipes) => {
+    const tagListHtml = document.querySelectorAll("#tags .tag");
+    tagListHtml.forEach(tag => {
+        tag.querySelector("i").addEventListener("click", (e) => {
+        const tagLabel = tag.getAttribute("data-name");
+        const tagsRemaining = tags.filter(tag => tag.name !== tagLabel);
+        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tagsRemaining);
+        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tagsRemaining);  
+        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tagsRemaining);
+        createTags(tagsRemaining, tagsContainer);
+        handleTagClick(listboxIngredientsList, tagsRemaining, recipes);
+        handleTagClick(listboxAppliancesList, tagsRemaining, recipes);
+        handleTagClick(listboxUstensilsList, tagsRemaining, recipes);
+        if (tags.length > 1) {
+            search(recipes, tagsRemaining, cardsContainer, searchInput.value);
+            handleRemoveTag(tagsRemaining, recipes);
+        } else {
+            let tagsVide = [];
+            search(allRecipes, tagsVide, cardsContainer, searchInput.value);
+            handleRemoveTag(tagsVide, recipes);
+        }
+      });
+    });
+  };
 
 
 export const search = (recipes, tags, container, searchString = "") => {
@@ -17,7 +71,6 @@ export const search = (recipes, tags, container, searchString = "") => {
             uniques.push(recipe);
         }
     });
-    console.log(uniques);
  container.innerHTML = "";
  if (uniques.length === 0) {
     document.getElementById("no-search-result").classList.remove("hidden");
@@ -27,11 +80,13 @@ export const search = (recipes, tags, container, searchString = "") => {
      createListboxsLists(uniques, getIngredients, listboxIngredientsList, "ingredients", tags);
      createListboxsLists(uniques, getAppliances, listboxAppliancesList, "appliances", tags); 
      createListboxsLists(uniques, getUstensils, listboxUstensilsList, "ustensils", tags);
+     handleTagClick(listboxIngredientsList, tags, uniques);
+     handleTagClick(listboxAppliancesList, tags, uniques);
+     handleTagClick(listboxUstensilsList, tags, uniques);
  }
 };
 
 const getRecipesByTags = (recipes, tags, searchString) => {
-    console.log(searchString);
     const recipeTagsNames = tags.map(tag => tag.name);
     let recipesByTags = [];
 
