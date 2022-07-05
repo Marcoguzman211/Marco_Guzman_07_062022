@@ -20,12 +20,7 @@ const chevronsListboxs = document.querySelectorAll(".listbox-controls .chevron")
 const listboxsInputs = document.querySelectorAll(".listbox-input");
 const searchInput = document.getElementById("search-input");
 
-/* // Create listboxs lists on load :
-createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
-createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
-createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  */
-
-search(recipes, tags, cardsContainer);
+search(recipes, tags, cardsContainer, searchInput.value);
 
 
 // Listboxs opening with chevron event 
@@ -46,58 +41,7 @@ listboxsInputs.forEach(input => {
     const chevron = parentElement.querySelector(".chevron");
     openOnInputListbox(listboxList, chevron);
   });
-
-  /* input.addEventListener("keyup", (e) => {
-    const parentElement = input.closest(".listbox"); 
-    const listboxList = parentElement.querySelector(".listbox-list");
-    const elements = listboxList.querySelectorAll("li");
-    searchInListbox(elements, e.target.value);
-  }); */
 });
-
- /*  const handleTagClick = listboxElementList => {
-    const elements = listboxElementList.querySelectorAll("li");
-    elements.forEach(element => {
-      element.addEventListener("click", e => {
-        const dataType = e.target.dataset.type;
-        const name = e.target.textContent;
-        const newTag = { name: name, datatype: dataType};
-        addTag(newTag, tags);
-        createTags(tags, tagsContainer);
-        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
-        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
-        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);  
-        handleTagClick(listboxIngredientsList); 
-        handleTagClick(listboxAppliancesList);
-        handleTagClick(listboxUstensilsList);
-        handleRemoveTag();
-        search(recipes, tags, cardsContainer, searchInput.value);
-      });
-    });
-  };
-
-handleTagClick(listboxIngredientsList); 
-handleTagClick(listboxAppliancesList);
-handleTagClick(listboxUstensilsList); */
-
-/* const handleRemoveTag = () => {
-  const tagListHtml = document.querySelectorAll("#tags .tag");
-  tagListHtml.forEach(tag => {
-      tag.querySelector("i").addEventListener("click", () => {
-      const tagLabel = tag.getAttribute("data-name");
-      tags = tags.filter(tag => tag.name !== tagLabel);
-      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
-      createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
-      createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
-      handleTagClick(listboxIngredientsList); 
-      handleTagClick(listboxAppliancesList);
-      handleTagClick(listboxUstensilsList);
-      createTags(tags, tagsContainer);
-      search(recipes, tags, cardsContainer, searchInput.value);
-      handleRemoveTag();
-    });
-  });
-}; */
 
 searchInput.addEventListener("keyup", (e) => {
   search(recipes, tags, cardsContainer, e.target.value);

@@ -35,38 +35,27 @@ export const handleTagClick = (listboxElementList, tags, recipes) => {
     });
   };
 
-/* export const handleRemoveTag = (tags, recipes) => {
-    const tagListHtml = document.querySelectorAll("#tags .tag");
-    tagListHtml.forEach(tag => {
-        tag.querySelector("i").addEventListener("click", (e) => {
+  export const handleRemoveTag = (tags, recipes) => {
+    const everyTag = document.querySelectorAll("#tags .tag");
+    everyTag.forEach(tag => {
+      tag.querySelector("i").addEventListener("click", e => {
+        if (tags.length === 1) {
+          search(allRecipes, [], cardsContainer, searchInput.value);
+          document.querySelector("#tags").innerHTML = "";
+          handleRemoveTag([], allRecipes);
+        }
         const tagLabel = tag.getAttribute("data-name");
         const tagsRemaining = tags.filter(tag => tag.name !== tagLabel);
-        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tagsRemaining);
-        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tagsRemaining);  
-        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tagsRemaining);
         createTags(tagsRemaining, tagsContainer);
-        handleTagClick(listboxIngredientsList, tagsRemaining, recipes);
-        handleTagClick(listboxAppliancesList, tagsRemaining, recipes);
-        handleTagClick(listboxUstensilsList, tagsRemaining, recipes);
-        if (tags.length > 0) {
-          search(recipes, tagsRemaining, cardsContainer, searchInput.value);
-            handleRemoveTag(tagsRemaining, recipes);
-            createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tagsRemaining);
-        createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tagsRemaining);  
-        createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tagsRemaining);
-        } else {
-            let tagsVide = [];
-            search(allRecipes, tagsVide, cardsContainer, searchInput.value);
-            handleTagClick(listboxIngredientsList, tagsVide, recipes);
-            handleTagClick(listboxAppliancesList, tagsVide, recipes);
-            handleTagClick(listboxUstensilsList, tagsVide, recipes);
-        }
+        console.log(tagsRemaining);
+        handleRemoveTag(tagsRemaining, allRecipes);
+        search(recipes, tagsRemaining, cardsContainer, searchInput.value);
       });
     });
-  }; */
+  };
 
 //Fonction principale
-export const search = (recipes, tags, container, searchString = "") => {
+export const search = (recipes, tags, container, searchString) => {
  const recipesByTags = getRecipesByTags(recipes, tags, searchString);
  const recipesBySearchString = getRecipesBySearchString(recipes, searchString, tags);
  const result = [...recipesByTags, ...recipesBySearchString];
@@ -92,31 +81,6 @@ export const search = (recipes, tags, container, searchString = "") => {
  }
 };
 
-/* const getRecipesByTags = (recipes, tags, searchString) => {
-    const recipeTagsNames = tags.map(tag => tag.name);
-    let recipesByTags = [];
-
-    if (tags.length === 0) {
-        return [];
-    }
-
-    recipes.forEach(recipe => {
-        const ustensils = recipe.ustensils.map(ustensil => ustensil);
-        const ingredients = recipe.ingredients.map(ingredient => ingredient.ingredient);
-        recipeTagsNames.forEach(tag => {
-            if (tag.toLowerCase() === recipe.appliance.toLowerCase()) {
-                recipesByTags.push(recipe);
-            } else if (ustensils.some(ustensil => tag.toLowerCase() === ustensil.toLowerCase())) {
-                recipesByTags.push(recipe);
-            } else if (ingredients.some(ingredient => tag.toLowerCase() === ingredient.toLowerCase())) {
-                recipesByTags.push(recipe);
-            }
-        });
-    });
-
-    return recipesByTags;
-}; */
-
 // Get recipes by tags :
 const getRecipesByTags = ($recipes, $tags) => {
     if ($tags.length === 0) {
@@ -126,7 +90,6 @@ const getRecipesByTags = ($recipes, $tags) => {
     $recipes.forEach((recipe) => {
       let containsAllTags = true;
       $tags.forEach((tag) => {
-        console.log(tag.datatype);
         const tagName = tag.name;
         let containsIngredientTag = false;
         if (tag.datatype === "appliances") {
