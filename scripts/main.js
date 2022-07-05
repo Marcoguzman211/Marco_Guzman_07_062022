@@ -45,4 +45,4 @@ listboxsInputs.forEach(input => {
 
 searchInput.addEventListener("keyup", (e) => {
   search(recipes, tags, cardsContainer, e.target.value);
-});
+});  

@@ -47,7 +47,6 @@ export const handleTagClick = (listboxElementList, tags, recipes) => {
         const tagLabel = tag.getAttribute("data-name");
         const tagsRemaining = tags.filter(tag => tag.name !== tagLabel);
         createTags(tagsRemaining, tagsContainer);
-        console.log(tagsRemaining);
         handleRemoveTag(tagsRemaining, allRecipes);
         search(recipes, tagsRemaining, cardsContainer, searchInput.value);
       });
@@ -55,7 +54,7 @@ export const handleTagClick = (listboxElementList, tags, recipes) => {
   };
 
 //Fonction principale
-export const search = (recipes, tags, container, searchString) => {
+export const search = (recipes, tags = [], container, searchString) => {
  const recipesByTags = getRecipesByTags(recipes, tags, searchString);
  const recipesBySearchString = getRecipesBySearchString(recipes, searchString, tags);
  const result = [...recipesByTags, ...recipesBySearchString];
@@ -79,6 +78,15 @@ export const search = (recipes, tags, container, searchString) => {
      handleTagClick(listboxAppliancesList, tags, uniques);
      handleTagClick(listboxUstensilsList, tags, uniques);
  }
+/*  searchInput.addEventListener("keyup", e => {
+  e.stopImmediatePropagation();
+  if (searchInput.value.length >= 3) {
+    console.log("Eligible");
+    search(allRecipes, tags, container, searchInput.value);
+  } else if (searchInput.value.length === 0 && tags.length === 0) {
+    search(allRecipes, tags, container, "");
+  } 
+}); */
 };
 
 // Get recipes by tags :
