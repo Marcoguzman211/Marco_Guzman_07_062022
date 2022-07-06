@@ -215,10 +215,10 @@ listboxsInputs.forEach(input => {
 
 searchInput.addEventListener("keyup", e => {
   e.stopImmediatePropagation();
-  if (searchInput.value.length >= 3) {
-    console.log("Eligible");
     search(allRecipes, tags, cardsContainer, searchInput.value);
-  } else if (searchInput.value.length - 1 === 0 && tags.length === 0) {
+  if (searchInput.value.length - 1 === 0 && tags.length === 0) {
+    search(allRecipes, [], cardsContainer, "");
+  } else if (searchInput.value.length - 1 === 0 && e.code === "Backspace") {
     search(allRecipes, tags, cardsContainer, "");
-  } 
+  }
 });
