@@ -222,3 +222,29 @@ searchInput.addEventListener("keyup", e => {
     search(allRecipes, tags, cardsContainer, "");
   }
 });
+
+// Listboxs input search keyup event
+const handleFilterListboxs = ($listboxInput) => { 
+  // Search inputs keyup event :
+  const listboxsInputs = document.querySelector($listboxInput);
+    listboxsInputs.addEventListener("keyup", (e) => {
+      const inputText = e.target.value;
+      const $listboxElementsList = listboxsInputs.closest(".listbox").querySelector(".listbox-list");
+      const $listboxElementsListItems = $listboxElementsList.querySelectorAll("li");
+      $listboxElementsListItems.forEach(listboxElement => {
+         const text =listboxElement.textContent;
+         if (inputText.length >= 3 && text.toLowerCase().includes(inputText.toLowerCase())) {
+          listboxElement.style.display = "block";
+         } else {
+          if (inputText.length >= 3) {
+            listboxElement.style.display = "none";
+          } else if (inputText.length === 0) {
+            listboxElement.style.display = "block";
+          }
+         }
+      });
+    });
+};
+handleFilterListboxs("#ingredients-input");
+handleFilterListboxs("#appliances-input");
+handleFilterListboxs("#ustensils-input");
