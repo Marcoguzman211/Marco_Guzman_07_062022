@@ -134,6 +134,7 @@ const getRecipesBySearchString = (recipes, searchString, tags) => {
         return [];
     }
 
+    console.log("Tags n'est pas censé être vide");
     let recipesBySearchString = []; 
     recipes.forEach(recipe => {
         //ingredients est un array 
