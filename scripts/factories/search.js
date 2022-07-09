@@ -44,7 +44,7 @@ const getRecipesByTags = ($recipes, $tags) => {
   $recipes.forEach((recipe) => {
     let containsAllTags = true;
     $tags.forEach((tag) => {
-      const tagName = tag.name.toLowerCase();
+      const tagName = tag.name;
       let containsIngredientTag = false;
       if (tag.attribute === "appliances") {
         if (recipe.appliance.toLowerCase() !== tagName.toLowerCase()) {
@@ -56,7 +56,7 @@ const getRecipesByTags = ($recipes, $tags) => {
         }
       } else if (tag.attribute === "ingredients") {
         recipe.ingredients.forEach((object) => {
-          if (object.ingredient.toLowerCase() === tagName) {
+          if (object.ingredient.toLowerCase() === tagName.toLowerCase()) {
             containsIngredientTag = true;
           }
         });
