@@ -10,7 +10,7 @@ import { handleTagClick } from "../main.js";
 const listboxIngredientsList = document.getElementById("ingredients-list");
 const listboxAppliancesList = document.getElementById("appliances-list");
 const listboxUstensilsList = document.getElementById("ustensils-list");
-// Error message node :
+// Error message node :                  
 const noSearchResult = document.getElementById("no-search-result");
 
 // Search :
