@@ -36,7 +36,7 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
     $listboxElementsList.innerHTML = "";
     items.forEach(item => {
         const elementList = document.createElement("li");
-        elementList.textContent = item.toLowerCase();
+        elementList.textContent = item;
         elementList.setAttribute("data-type", $attribute); 
         if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) { // if item ≠ tag... 
             $listboxElementsList.append(elementList); // ... append each item in listboxList
