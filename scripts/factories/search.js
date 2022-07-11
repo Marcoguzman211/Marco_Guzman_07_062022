@@ -13,7 +13,7 @@ const listboxUstensilsList = document.getElementById("ustensils-list");
 // Error message node :                  
 const noSearchResult = document.getElementById("no-search-result");
 
-// Search :
+// Search avec  des boucles natives :
 export const search = ($recipes, $tags, $toRefresh = true) => {
   const searchInput = document.getElementById("search-input").value.toLowerCase(); 
   const recipesAfterTagFilter = getRecipesByTags($recipes, $tags);
@@ -40,35 +40,35 @@ const getRecipesByTags = ($recipes, $tags) => {
   if ($tags.length === 0) {
     return $recipes;
   }
-  const newRecipes = [];
-  $recipes.forEach((recipe) => {
+  let newRecipes = [];
+  for (let i = 0; i < $recipes.length; i++) {
     let containsAllTags = true;
-    $tags.forEach((tag) => {
-      const tagName = tag.name;
+    for (let j = 0; j < $tags.length; j++) {
+      const tagName = $tags[j].name;
       let containsIngredientTag = false;
-      if (tag.attribute === "appliances") {
-        if (recipe.appliance.toLowerCase() !== tagName.toLowerCase()) {
+      if ($tags[j].attribute === "appliances") {
+        if ($recipes[i].appliance.toLowerCase() !== tagName.toLowerCase()) {
           containsAllTags = false;
         }
-      } else if (tag.attribute === "ustensils") {
-        if (!recipe.ustensils.includes(tagName)) {
+      } else if ($tags[j].attribute === "ustensils") {
+        if (!$recipes[i].ustensils.includes(tagName)) {
           containsAllTags = false;
         }
-      } else if (tag.attribute === "ingredients") {
-        recipe.ingredients.forEach((object) => {
-          if (object.ingredient.toLowerCase() === tagName.toLowerCase()) {
+      } else if ($tags[j].attribute === "ingredients") {
+        for (let k = 0; k < $recipes[i].ingredients.length; k++) {
+          if ($recipes[i].ingredients[k].ingredient.toLowerCase() === tagName.toLowerCase()) {
             containsIngredientTag = true;
           }
-        });
+        }
         if (containsIngredientTag === false) {
           containsAllTags = false;
         }
       }
-    });
-    if (containsAllTags) {
-      newRecipes.push(recipe);
     }
-  });
+    if (containsAllTags) {
+      newRecipes.push($recipes[i]);
+    }
+  }
   return newRecipes;
 };
 
@@ -80,16 +80,17 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
   }
   if ($searchInput.length >= 3) {
     // Ingredients search :
-    $recipes.filter((recipe) =>
-      recipe.ingredients.forEach((object) => {
-        const objectIngredient = object.ingredient.toLowerCase();
+    $recipes.filter((recipe) => {
+      for (let i = 0; i < recipe.ingredients.length; i++) {
+        const objectIngredient = recipe.ingredients[i].ingredient.toLowerCase();
         if (objectIngredient.includes($searchInput)) {
           if (!newRecipes.includes(recipe)) {
             newRecipes.push(recipe);
           }
         }
-      })
-    );
+      }
+    }
+    ); 
     // Recipe name search : 
     $recipes.filter((recipe) => {
       const recipeName = recipe.name.toLowerCase();
@@ -162,13 +163,13 @@ export const displayRecipes = (recipesAfterSearchInput) => {
   };
 
   if (recipesAfterSearchInput.length >= 1) {
-    recipesAfterSearchInput.forEach((recipeAfterSearchInput) => {
+      for (let i = 0; i < recipesAfterSearchInput.length; i++) {
       const div = document.createElement("div");
       div.classList.add("card");
-      div.innerHTML = createFactoryCard(recipeAfterSearchInput);
+      div.innerHTML = createFactoryCard(recipesAfterSearchInput[i]);
       cardNode.append(div);
       noSearchResult.classList.add("hidden");
-    });
+    }
   } else {
     noSearchResult.classList.remove("hidden"); // Error message 
   }
