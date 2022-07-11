@@ -80,35 +80,37 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
   }
   if ($searchInput.length >= 3) {
     // Ingredients search :
-    $recipes.filter((recipe) => {
-      for (let i = 0; i < recipe.ingredients.length; i++) {
-        const objectIngredient = recipe.ingredients[i].ingredient.toLowerCase();
+    for (const r in $recipes) {
+      const objectRecipe = $recipes[r].ingredients;
+      for (let i = 0; i < objectRecipe.length; i++) {
+        const objectIngredient = objectRecipe[i].ingredient.toLowerCase();
         if (objectIngredient.includes($searchInput)) {
-          if (!newRecipes.includes(recipe)) {
-            newRecipes.push(recipe);
+          if (!newRecipes.includes($recipes[r])) {
+            newRecipes.push($recipes[r]);
           }
         }
       }
     }
-    ); 
+
     // Recipe name search : 
-    $recipes.filter((recipe) => {
-      const recipeName = recipe.name.toLowerCase();
+    for (const r in $recipes) {
+      const recipeName = $recipes[r].name.toLowerCase();
       if (recipeName.includes($searchInput)) {
-        if (!newRecipes.includes(recipe)) {
-          newRecipes.push(recipe); 
+        if (!newRecipes.includes($recipes[r])) {
+          newRecipes.push($recipes[r]);
         }
       }
-    });
+    }
+
     // Description search :
-    $recipes.filter((recipe) => {
-      const recipeDescription = recipe.description.toLowerCase();
+    for (const r in $recipes) {
+      const recipeDescription = $recipes[r].description.toLowerCase();
       if (recipeDescription.includes($searchInput)) {
-        if (!newRecipes.includes(recipe)) {
-          newRecipes.push(recipe);
+        if (!newRecipes.includes($recipes[r])) {
+          newRecipes.push($recipes[r]);
         }
       }
-    });
+    }
   }
   return newRecipes;
 };
