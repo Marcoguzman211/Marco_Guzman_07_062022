@@ -58,19 +58,6 @@ listboxInputs.forEach(element => {
   });
 });
 
-//Lisbox opening on input event
-/* for (let i = 0; i < listboxInputs.length; i++) {
-  listboxInputs[i].addEventListener("click", () => {
-    const parentElement = listboxInputs[i].closest(".listbox");
-    const listboxList = parentElement.querySelector(".listbox-list");
-    const chevron = parentElement.querySelector(".chevron");
-    openOnInputListbox(listboxList, chevron);
-  });
-} */
-
-
-
-
 // Tags, add click events :
 export const handleTagClick = (listboxElementList) => { 
   const elements = listboxElementList.querySelectorAll("li"); 
@@ -91,27 +78,6 @@ export const handleTagClick = (listboxElementList) => {
     });
   });
 };
-
-//Crate a version of handleTagClick with a for loop
-/* export const handleTagClick = (listboxElementList) => {
-  const elements = listboxElementList.querySelectorAll("li");
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].addEventListener("click", (e) => {
-      const dataType = e.target.dataset.type;
-      const name = e.target.textContent;
-      const object = {name: name, attribute: dataType};
-      addTags(object, tags);
-      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
-      createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);
-      createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
-      handleTagClick(listboxIngredientsList);
-      handleTagClick(listboxAppliancesList);
-      handleTagClick(listboxUstensilsList);
-      handleRemoveTag();
-      search(recipes, tags);
-    });
-  }
-}; */
 
 handleTagClick(listboxIngredientsList); 
 handleTagClick(listboxAppliancesList);
@@ -136,27 +102,6 @@ const handleRemoveTag = () => {
         });
   });
 };
-
-//Tags, remove click events :
-/* const handleRemoveTag = () => {
-  const tagListHtml = document.querySelectorAll("#tags .tag");
-  for (let i = 0; i < tagListHtml.length; i++) {
-    tagListHtml[i].addEventListener("click", () => {
-      const tagLabel = tagListHtml[i].getAttribute("data-name");
-      tags = tags.filter(tag => tag.name !== tagLabel);
-      
-      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
-      createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);
-      createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
-      handleTagClick(listboxIngredientsList);
-      handleTagClick(listboxAppliancesList);
-      handleTagClick(listboxUstensilsList);
-      refreshTagList(tags);
-      handleRemoveTag();
-      search(recipes, tags);
-    });
-  }
-}; */
 
 // Main input search keyup event :
 document.querySelector("#search-input").addEventListener("keyup", () => { 
